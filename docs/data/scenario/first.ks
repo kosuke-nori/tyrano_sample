@@ -1,46 +1,84 @@
 *start
 
-[title name="走るか寝るかするメロス"]
+[title name="じゃんけん"]
 [hidemenubutton]
 [wait time=200]
 [freeimage layer="base"]
 
-「走るか寝るかするメロス」[l][r]
+「じゃんけん」[l][r]
 
-メロスは激怒した。[l][r]
+何を出す？[l][r]
 
-必ず、かの邪智暴虐の王を除かねばならぬと決意した。[l][r]
+[iscript]
+tf.rand = Math.random()
+[endscript]
 
-(中略)[l][r]
 
-ああ、何もかも、ばかばかしい。私は、醜い裏切り者だ。どうとも、勝手にするがよい。やんぬる哉。[l][r]
-メロスは...[l][r]
-
-[link target=*tag_sleep] →寝る [endlink][r]
-[link target=*tag_run] →走る [endlink][r]
+[link target=*tag_gu] →グー [endlink][r]
+[link target=*tag_tyoki] →チョキ [endlink][r]
+[link target=*tag_pa] →パー [endlink][r]
 [s]
 
-*tag_sleep
+*tag_gu
 
 [cm]
 
-[bg storage=sleep.jpg time=500]
 
-メロスは死んだように深く眠った。[l][r]
-勇者は、ひどく赤面した。[r]
 
-【 BAD END 】[l][cm]
+最初はグー、じゃんけん！[l][r]
+自分：ぐー！[l][r]
+相手：[if exp="tf.rand < 0.33]
+    [bg storage=janken_gu.png time=500]
+    相手：今回はこの辺にしておこう
+[elsif exp="tf.rand < 0.66]
+    [bg storage=janken_choki.png time=500]
+    相手：やるな！！
+[else]
+    [bg storage=janken_pa.png time=500]
+    相手：まだまだだな！
+[endif][r]
+
+[l][cm]
 
 [jump target=*start]
 
-*tag_run
+*tag_tyoki
 
-[bg storage=run.jpg time=500]
 
 [cm]
-メロスは黒い風のように走った。[l][r]
-陽は、ゆらゆら地平線に没し、まさに最後の一片の残光も、消えようとした時、メロスは疾風の如く刑場に突入した。間に合った。[r]
+最初はグー、じゃんけん！[l][r]
+自分：ちょき！[l][r]
+相手：[if exp="tf.rand < 0.33]
+    [bg storage=janken_gu.png time=500]
+    相手：まだまだだな！
+[elsif exp="tf.rand < 0.66]
+    [bg storage=janken_choki.png time=500]
+    相手：今回はこの辺にしておこう
+[else]
+    [bg storage=janken_pa.png time=500]
+    相手：やるな！！
+[endif][r]
 
-【 GOOD END 】[l][cm]
+[l][cm]
+
+[jump target=*start]
+
+
+*tag_pa
+
+最初はグー、じゃんけん！[l][r]
+自分：ぱー！[l][r]
+相手：[if exp="tf.rand < 0.33]
+    [bg storage=janken_gu.png time=500]
+    相手：やるな！！
+[elsif exp="tf.rand < 0.66]
+    [bg storage=janken_choki.png time=500]
+    相手：まだまだだな！
+[else]
+    [bg storage=janken_pa.png time=500]
+    相手：今回はこの辺にしておこう
+[endif][r]
+
+[l][cm]
 
 [jump target=*start]
